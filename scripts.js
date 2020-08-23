@@ -45,6 +45,7 @@ function changeColor(randomColors) {
     rows = document.querySelectorAll('.row')
     rows.forEach(function (row) {
         row.addEventListener('mouseover', () => { row.style.backgroundColor = decideColor(randomColors) })
+        row.addEventListener('touchend', () => { row.style.backgroundColor = decideColor(randomColors) })
     })
 }
 function changeProperties() {
