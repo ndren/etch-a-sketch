@@ -8,7 +8,7 @@ function decideColor(randomColors) {
         let green = Math.floor(255 * Math.random());
         let blue = Math.floor(255 * Math.random());
         let alpha = Math.floor(Math.random() + 0.5); // Minimum of 0.5, to keep high values.
-        return `rgba(${red}, ${green}, ${blue}, ${alpha})`;   
+        return `rgba(${red}, ${green}, ${blue}, ${alpha})`;
     }
     else {
         return document.querySelector('#color').value;
@@ -53,7 +53,15 @@ function changeProperties() {
     let columnCount = prompt("How many columns?", 16);
     // Take strictly the first letter, in lowercase.
     let randomColors = prompt("(R)andom colors or (f)ixed colors?", "r").toLowerCase()[0];
-    createDivs(rowCount, columnCount, randomColors)
+    if (isNaN(Number(rowCount)) || isNaN(Number(columnCount)) || columnCount <= 0 || rowCount <= 0) {
+        clearEtch();
+        let para = document.createElement('p');
+        para.innerText = 'Sorry, the number of rows and/or columns is invalid. Please try again.';
+        etch.appendChild(para);
+    }
+    else {
+        createDivs(rowCount, columnCount, randomColors);
+    }
 }
 let colorPicked = '#000000'
 createDivs(16, 16, 'r');
