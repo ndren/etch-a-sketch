@@ -7,7 +7,7 @@ function decideColor(randomColors) {
         let red = Math.floor(255 * Math.random());
         let green = Math.floor(255 * Math.random());
         let blue = Math.floor(255 * Math.random());
-        let alpha = max(Math.random(), 0.5); // Minimum of 0.5, to keep high values.
+        let alpha = Math.max(Math.random(), 0.5); // Minimum of 0.5, to keep high values.
         return `rgba(${red}, ${green}, ${blue}, ${alpha})`;
     }
     else {
