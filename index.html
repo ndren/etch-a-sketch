@@ -9,12 +9,24 @@
 
     <body>
         <div id="etch"></div>
-        <p>Begin drawing by hovering over the grid.</p>
         <div id="options">
-            <button id="properties">Change grid properties?</button>
-            <input type="color" id="color">
-        </div>
-        <script src="scripts.js"></script>
+            <div id="config">
+                <div id="table-properties">
+                    <label for="rows">Rows</label>
+                    <input type="number" id="rows" min="0" max="250" value="16">
+                    <label for="columns">Columns</label>
+                    <input type="number" id="columns" min="0" max="250" value="16">
+                </div>
+                <div id="color-config">
+                    <input type="radio" id="random" name="color-type" checked>
+                    <label for="random">Random Colors</label>
+                    <input type="radio" id="fixed" name="color-type">
+                    <label for="fixed">Fixed Colors</label>
+                    <input type="color" id="color">
+                </div>
+            </div>
+            <button id="save">Save configuration</button>
+            <script src="scripts.js"></script>
     </body>
 </main>
 

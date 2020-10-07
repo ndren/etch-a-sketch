@@ -48,22 +48,48 @@ function changeColor(randomColors) {
         row.addEventListener('touchend', () => { row.style.backgroundColor = decideColor(randomColors) })
     })
 }
-function changeProperties() {
-    let rowCount = prompt("How many rows?", 16);
-    let columnCount = prompt("How many columns?", 16);
-    // Take strictly the first letter, in lowercase.
-    let randomColors = prompt("(R)andom colors or (f)ixed colors?", "r").toLowerCase()[0];
+function saveProperties() {
+    let rowInput = document.querySelector('#rows')
+    let columnInput = document.querySelector('#columns')
+    let fixedInput = document.querySelector('#fixed')
+    let randomInput = document.querySelector('#random')
+    let rowCount = rowInput.value
+    let columnCount = columnInput.value
+    let randomColors
+    if (fixedInput.checked) {
+        randomColors = 'f'
+    }
+    else {
+        randomColors = 'r'
+    }
+
     if (isNaN(Number(rowCount)) || isNaN(Number(columnCount)) || columnCount <= 0 || rowCount <= 0) {
         clearEtch();
         let para = document.createElement('p');
         para.innerText = 'Sorry, the number of rows and/or columns is invalid. Please try again.';
         etch.appendChild(para);
     }
+
     else {
-        createDivs(rowCount, columnCount, randomColors);
+        createDivs(rowCount, columnCount, randomColors)
     }
 }
+function hideColorButton() {
+    let fixedInput = document.querySelector('#fixed')
+    let colorButton = document.querySelector('#color')
+    if (fixedInput.checked) {
+        colorButton.style.display = 'inline'
+    }
+    else {
+        colorButton.style.display = 'none'
+    }
+}
+
 let colorPicked = '#000000'
 createDivs(16, 16, 'r');
-let propertiesButton = document.querySelector('#properties');
-propertiesButton.addEventListener("click", changeProperties);
+
+let saveButton = document.querySelector('#save');
+saveButton.addEventListener("click", saveProperties);
+
+let colorConfigSpace = document.querySelector('#color-config')
+colorConfigSpace.addEventListener("click", hideColorButton)

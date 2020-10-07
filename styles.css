@@ -2,6 +2,7 @@ body {
     text-align: center;
     margin: 0 auto;
     background-color: darkgrey;
+    font-family: monospace;
 }
 #etch {
     display: flex;
@@ -15,4 +16,15 @@ body {
 .row {
     margin: 0 auto;
     border: 1px solid black;
+}
+#options {
+    margin-top: 1%;
+}
+#save {
+    width: 20%;
+    min-width: 200px;
+    margin-top: 0.5%;
+}
+#color {
+    display: none;
 }
